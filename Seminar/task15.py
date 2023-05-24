@@ -15,4 +15,4 @@ for _ in range(watermelons - 1):
     else:
         if weight < min_kg:
             min_kg = weight
-print(f'Для себя любимого - {max_kg}, для любимой тещи - {min_kg}')
+print(f'  Для себя любимого - {max_kg}, для любимой тещи - {min_kg}')
