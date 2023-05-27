@@ -3,20 +3,37 @@
 На столе лежат n монеток. Некоторые из них лежат вверх 
 решкой, а некоторые – гербом. Определите минимальное число
 монеток, которые нужно перевернуть, чтобы все монетки были 
-повернуты вверх одной и той же стороной. Выведите минимальное 
-количество монет, которые нужно перевернуть.
+повернуты вверх одной и той же стороной.
+Выведите минимальное количество монет, которые нужно перевернуть.
 '''
-from random import randint
-eagle = 0
-tails = 0
-n=range(int(input('  Введите число монет на столе?: ')))
-for i in n :
-    if randint(0,1) == 0:
-        eagle += 1
+# МОЕ РЕШЕНИЕ:
+# from random import randint
+# eagle = 0
+# tails = 0
+# n=range(int(input('  Введите число монет на столе?: ')))
+# for i in n :
+#     if randint(0,1) == 0:
+#         eagle += 1
+#     else:
+#         tails += 1
+# print(f'Орел: {eagle}, Решка: {tails}')
+# if eagle<tails:
+#     print ('Нужно перевернуть монеты Орел!')
+# else:
+#     print('Нужно перевернуть монеты Решка!')
+
+
+# ИДЕАЛЬНОЕ РЕШЕНИЕ:
+n = int(input())
+count_zero = 0
+count_one = 0
+for i in range(n):
+    x = int(input())
+    if x == 0:
+        count_zero += 1
     else:
-        tails += 1
-print(f'Орел: {eagle}, Решка: {tails}')
-if eagle<tails:
-    print ('Нужно перевернуть монеты Орел!')
+        count_one += 1
+if count_one > count_zero:
+    print(count_zero)
 else:
-    print('Нужно перевернуть монеты Решка!')
+    print(count_one)

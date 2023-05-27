@@ -8,14 +8,24 @@
 s(4) p(4) -> x=2 y=2 (s(5) p(6) -> x=2 y=3)
 
 '''
-s=int(input('  Введите сумму двух целых чисел: '))
-p=int(input('  Введите произведение двух целых чисел: '))
-m=True
-for i in range(1,1000,1):
-    y=s-i
-    if i*y == p:
-        print (f'Число Х: {i}, число У: {y}')
-        m=False
-        break
-if m==True:
-    print ('Таких чисел нет!')
+
+# МОЕ РЕШЕНИЕ:
+# s=int(input('  Введите сумму двух целых чисел: '))
+# p=int(input('  Введите произведение двух целых чисел: '))
+# m=True
+# for i in range(1,1000,1):
+#     y=s-i
+#     if i*y == p:
+#         print (f'Число Х: {i}, число У: {y}')
+#         m=False
+#         break
+# if m==True:
+#     print ('Таких чисел нет!')
+
+# ИДЕАЛЬНОЕ РЕШЕНИЕ:
+x = int(input())
+y = int(input())
+for i in range(x):
+    for j in range(y):
+        if x == i + j and y == i * j:
+            print(i, j)
