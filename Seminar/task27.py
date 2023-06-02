@@ -22,8 +22,11 @@ Output: 19
 # print(len({x for x in re.findall(r'\w+', a)}))
 
 # ВАРИАНТ 2:
+'''
+Определить сколько литералов встречается в предложении
+'''
 some_dict = {}
-word = input('  Введите слово:\n')
+word = input(' Введите слово:\n')
 for letter in word:
     if letter not in some_dict:
         some_dict[letter] = 1
