@@ -90,3 +90,9 @@ elif k < n * m and (k % n == 0 or k % m == 0):
 else:
     print('Что то пошло не так.')
 """
+def fact(n):
+    if n<=1:
+        return 1
+    return n*fact(n-1)
+    
+print(fact(5))
