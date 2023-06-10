@@ -16,19 +16,19 @@
 5 10 15 20 25 30
 6 12 18 24 30 36
 
-'''
-
-# ## Александр LyraX 22:45 преподаватель:
+## Александр LyraX 22:45 преподаватель:
 # def print_operation_table(operation, num_rows=6, num_columns=6):
 #     print(operation, num_rows, num_columns)
 
 # print_operation_table(lambda x: x, 7, 10)
 
+'''
 
 print('Задача 36')
 print('Вывод таблицы с применением функций высшего порядка  :')
 
 def print_operation_table(operation, num_rows=10, num_columns=10):
+    # print(operation, num_rows, num_columns)
     a = [[operation(i, j) for j in range(1, num_columns + 1)] for i in range(1, num_rows + 1)]
     for i in a:
         print(*[f"{x:>3}" for x in i])
