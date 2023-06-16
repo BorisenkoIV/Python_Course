@@ -5,7 +5,7 @@
 на экран все записи с этой фамилий. Также пользователь может добавлять
 новых людей в справочник в режиме - импорт из файла.
 '''
-
+temp_file = "output.txt"
 ### 1 - Ввод данных нового контакта:
 def new_contacts():
     surname = input(' Введите фамилию (с заглавной буквы): ')
@@ -27,21 +27,37 @@ def search_contact(phonebook):
     with open(phonebook,'r', encoding='utf-8') as f: # открываем файл на чтение
         x=(f.read()).split('\n') # читаем, разбиваем текст на строки по символу переноса строки (\п)
         # print(f'{x}\n')
-        seach_msg=input(' Введите данные клиента ФИО (с заглавной буквы), телефон (начиная с 8-ки):\n')
-        seach=False
+        search_msg=input(' Введите данные клиента ФИО (с заглавной буквы), телефон (начиная с 8-ки):\n')
+        search=False
     for n in x: # пробегаемся по тексту
         if n!= '': # пропускаем пустые строки
             n=n.split(' ') # разбиваем подстроки по символу 'пробел'
-            if seach_msg==n[0] or seach_msg==n[1] or seach_msg==n[2] or seach_msg==n[3]:
+            if search_msg==n[0] or search_msg==n[1] or search_msg==n[2] or search_msg==n[3]:
                 print(f'{n[0]} {n[1]} {n[2]} {n[3]}')
-                seach=True
-    if seach==False:
+                search=True
+    if search==False:
         print('Клиента с такими данными нет в списке!')
 
 # ### 3 - Удалить контакт:
-# def delete_contact(file_name):
-#     with open(file_name, 'w+', encoding='utf-8') as file:
-
+def delete_contacts(phonebook):
+    with open(phonebook,'r', encoding='utf-8') as f: # открываем файл на чтение
+        with open(temp_file, "w", encoding='utf-8') as outfile: # открываем файл на запись
+            x=(f.read()).split('\n') # читаем, разбиваем текст на строки по символу переноса строки (\п)
+            search_msg=input(' Введите "Фамилию" из контактов для удаления:\n')
+            search=False
+            for n in x: # пробегаемся по тексту
+                if n!= '': # пропускаем пустые строки
+                    n=n.split(' ') # разбиваем подстроки по символу 'пробел'
+                    # print (n)
+                    if search_msg!=n[0]: 
+                    # or search_msg!=n[1] or search_msg!=n[2] or search_msg!=n[3]:
+                        s=' '.join(n)
+                        # print (s)
+                        outfile.write(f'{s}\n')
+                    else:
+                        search=True
+            if search==False:
+                print('Клиента с такими данными нет в списке!')
 
 ### 4 - Вывести все контакты в консоль:
 def print_contacts():
@@ -63,16 +79,16 @@ def import_data(file_to_add, phonebook):
 def action(phonebook):
     while True:
         try:
-            mode = int (input ('\nВведите режим:\n 1 - добавить контакт\n 2 - найти контакт(ы)\n 4 - вывести все контакты\n 5 - импорт контактов\n 0 - завершить\n'))
+            mode = int (input ('\nВведите режим:\n 1 - добавить контакт\n 2 - найти контакт(ы)\n 3 - удалить контакт\n 4 - вывести все контакты\n 5 - импорт контактов\n 0 - завершить\n'))
         except ValueError:
             print('  Вы ввели не число!\n')
             mode = int (input ('Введите режим:\n 1 - добавить контакт\n 2 - найти контакт(ы)\n 4 - вывести все контакты\n 5 - импорт контактов\n 0 - завершить\n'))
         if mode == 1:
             creating()
         elif mode == 2:
-                search_contact(phonebook)
-        # elif mode == 3:
-        #     delete_contacts()
+            search_contact(phonebook)
+        elif mode == 3:
+            delete_contacts(phonebook)
         elif mode == 4:
             print_contacts()
         elif mode == 5:
@@ -86,5 +102,6 @@ def action(phonebook):
 
 file = 'test_book.txt'
 action(file)
+# temp_file = "output.txt"
     # text = file.read().splitlines()
     # print(text)
